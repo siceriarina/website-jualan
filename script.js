@@ -1,39 +1,73 @@
-let keranjang = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-function tambah(namaProduk){
-  keranjang.push(namaProduk);
-  tampilkan();
+function save(){
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function tampilkan(){
+function tambah(nama, harga){
+  cart.push({nama, harga});
+  save();
+  render();
+}
+
+function hapus(index){
+  cart.splice(index, 1);
+  save();
+  render();
+}
+
+function render(){
+
   let list = document.getElementById("list");
+  let total = document.getElementById("total");
+
   list.innerHTML = "";
 
-  keranjang.forEach((item, i) => {
+  let sum = 0;
+
+  cart.forEach((item, i) => {
+
+    sum += item.harga;
+
     let li = document.createElement("li");
-    li.textContent = item;
+
+    li.innerHTML = `
+      ${item.nama} - Rp ${item.harga}
+      <button class="delete" onclick="hapus(${i})">X</button>
+    `;
+
     list.appendChild(li);
   });
+
+  total.innerText = sum;
 }
 
 function checkout(){
 
-  if(keranjang.length === 0){
-    alert("Keranjang masih kosong!");
+  if(cart.length === 0){
+    alert("Keranjang kosong!");
     return;
   }
 
   let email = "maryamsyasmin@gmail.com";
 
-  let isi = "Halo, saya mau pesan:\n\n";
+  let text = "Halo, saya mau pesan:\n\n";
 
-  keranjang.forEach(item => {
-    isi += "- " + item + "\n";
+  let total = 0;
+
+  cart.forEach(item => {
+    text += - ${item.nama} (Rp ${item.harga})\n;
+    total += item.harga;
   });
 
-  window.location.href =
-  `mailto:${email}?subject=Pesanan Ganci&body=${encodeURIComponent(isi)}`;
+  text += \nTotal: Rp ${total};
 
-  keranjang = [];
-  tampilkan();
+  window.location.href =
+  mailto:${email}?subject=Pesanan Ganci&body=${encodeURIComponent(text)};
+
+  cart = [];
+  save();
+  render();
 }
+
+render();
