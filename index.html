@@ -4,67 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Toko Ganci</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <h1>✨ TOKO GANCI ✨</h1>
-    <p>Lucu • Handmade • Murah</p>
-  </header>
+<header>
+  <h1>✨ TOKO GANCI ✨</h1>
+  <p>Lucu • Handmade • Murah</p>
+</header>
 
-  <!-- PRODUK -->
-  <section class="container">
+<!-- PRODUK -->
+<section class="container">
 
-    <!-- PRODUK 1 -->
-    <div class="card">
-      <img src="ganci1.jpg" alt="Ganci">
+  <div class="card">
+    <img src="ganci1.jpg">
+    <h2>Ganci Kuromi</h2>
+    <p class="harga">Rp 10.000</p>
+    <button onclick="tambah('Ganci Kuromi')">Tambah Keranjang</button>
+  </div>
 
-      <h2>Ganci Lucky Knot</h2>
+  <div class="card">
+    <img src="ganci2.jpg">
+    <h2>Ganci Dino</h2>
+    <p class="harga">Rp 15.000</p>
+    <button onclick="tambah('Ganci Dino')">Tambah Keranjang</button>
+  </div>
 
-      <p class="harga">Rp 10.000</p>
+</section>
 
-      <button onclick="pesan('Ganci Lucky Knot')">
-        Pesan
-      </button>
-    </div>
+<!-- KERANJANG -->
+<section class="cart">
+  <h2>🛒 Keranjang</h2>
+  <ul id="list"></ul>
 
-    <!-- PRODUK 2 -->
-    <div class="card">
-      <img src="ganci2.jpg" alt="Ganci">
+  <button class="checkout" onclick="checkout()">
+    Checkout (Email)
+  </button>
+</section>
 
-      <h2>Ganci Snake Knot</h2>
-
-      <p class="harga">Rp 15.000</p>
-
-      <button onclick="pesan('Ganci Dino')">
-        Pesan
-      </button>
-    </div>
-
-    <!-- PRODUK 3 -->
-    <div class="card">
-      <img src="ganci3.jpg" alt="Ganci">
-
-      <h2>Ganci Bunny</h2>
-
-      <p class="harga">Rp 12.000</p>
-
-      <button onclick="pesan('Ganci Bunny')">
-        Pesan
-      </button>
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2026 TOKO GANCI
-  </footer>
-
-  <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>
