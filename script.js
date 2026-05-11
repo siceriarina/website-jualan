@@ -1,19 +1,39 @@
-function pesan(namaProduk){
+let keranjang = [];
 
-  let nama = prompt("Masukkan nama kamu:");
+function tambah(namaProduk){
+  keranjang.push(namaProduk);
+  tampilkan();
+}
 
-  if(nama){
+function tampilkan(){
+  let list = document.getElementById("list");
+  list.innerHTML = "";
 
-    let email = "maryamsyasmin@gmail.com";
+  keranjang.forEach((item, i) => {
+    let li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+}
 
-    let subject = "Pesanan Ganci";
+function checkout(){
 
-    let body =
-`Halo, saya ${nama}
-Mau pesan:
-${namaProduk}`;
-
-    window.location.href =
-`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  if(keranjang.length === 0){
+    alert("Keranjang masih kosong!");
+    return;
   }
+
+  let email = "maryamsyasmin@gmail.com";
+
+  let isi = "Halo, saya mau pesan:\n\n";
+
+  keranjang.forEach(item => {
+    isi += "- " + item + "\n";
+  });
+
+  window.location.href =
+  `mailto:${email}?subject=Pesanan Ganci&body=${encodeURIComponent(isi)}`;
+
+  keranjang = [];
+  tampilkan();
 }
