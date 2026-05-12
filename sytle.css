@@ -1,3 +1,6 @@
+body {
+  background: blue !important;
+}
 /* ===== RESET DASAR ===== */
 * {
   margin: 0;
